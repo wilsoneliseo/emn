@@ -1,0 +1,188 @@
+%Ejercicios de Seccion 7.3, Pág.459
+\section{ejercicio 1}
+Encuentre, por el metodo de jacobi, la primera y segunda iteracion,
+para las siguientes sistemas de ecuaciones, use $x^{(0)}=0$.
+\subsection{inciso a)}
+\begin{eqnarray*}
+    3x_1-x_2+x_3&=&1,\\
+    3x_1+6x_2+2x_3&=&0,\\
+    3x_1+3x_2+7x_3&=&4.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([3,-1,1],[3,6,2],[3,3,7]);
+b:matrix([1],[0],[4]);
+x_0:matrix([0,0,0]);
+jacobi(a,b,x_0,4,2);
+\end{verbatim}
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}EX1{}}&\mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}ERROR{}}\cr 1&
+ 0.33333&0&0.57143&0.33333&0&0.57143&0.57143\cr 2&0.14286&-0.35714&
+ 0.42857&0.19048&0.35714&0.14286&0.35714\cr }$$
+
+Solución aproximada $\left(0.14286,-0.35714,0.42857\right)$.
+\subsection{inciso b)}
+\begin{eqnarray*}
+  10x_1-x_2&=&9,\\
+  -x_1+10x_2-2x_3&=&7,\\
+  -2x_2+10x_3&=&6.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([10,-1,0],[-1,10,-2],[0,-2,10]);
+b:matrix([9],[7],[6]);
+x_0:matrix([0,0,0]);
+jacobi(a,b,x_0,4,2);
+\end{verbatim}
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}EX1{}}&\mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}ERROR{}}\cr 1&
+ 0.9&0.7&0.6&0.9&0.7&0.6&0.9\cr 2&0.97&0.91&0.74&0.07&0.21&0.14&0.21
+ \cr }$$
+Solución aproximada $\left(0.97,0.91,0.74\right)$.
+\section{ejercicio 2}
+Encuentre, por el metodo de jacobi, la primera y segunda iteracion,
+para las siguientes sistemas de ecuaciones, use $x^{(0)}=0$.
+
+\subsection{inciso b)}
+\begin{eqnarray*}
+  -2x_1+x_2+1/2x_3&=&4,\\
+  x_1-2x_2-1/2x_3&=&-4,\\
+  x_2+2x_3&=&0.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([-2,1,0.5],[1,-2,-0.5],[0,1,2]);
+b:matrix([4],[-4],[0]);
+x_0:matrix([0,0,0]);
+jacobi(a,b,x_0,6,2);
+\end{verbatim}
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}EX1{}}&\mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}ERROR{}}\cr 1&-
+ 2.0&2.0&0&2.0&2.0&0&2.0\cr 2&-1.0&1.0&-1.0&1.0&1.0&1.0&1.0\cr }$$
+Solución aproximada $\left(-1,1,-1\right)$.
+
+\subsection{inciso d)}
+\begin{eqnarray*}
+  4x_1-x_2-x_4&=&0,\\
+  -x_1+4x_2-x_3-x_5&=&5,\\
+  -x_2+4x_3-x_6&=&0,\\
+  -x_1+4x_4-x_5&=&6,\\
+  -x_2-x_4+4x_5-x_6&=&-2,\\
+  -x_3-x_5+4x_6&=&6.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([4,-1,0,-1,0,0],[-1,4,-1,0,-1,0],[0,-1,4,0,0,-1],
+[-1,0,0,4,-1,0],[0,-1,0,-1,4,-1],[0,0,-1,0,-1,4]);
+b:matrix([0],[5],[0],[6],[-2],[6]);
+x_0:matrix([0,0,0,0,0,0]);
+jacobi(a,b,x_0,6,2);
+\end{verbatim}
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}X4{}}&\mbox{{}X5{}}&\mbox{{}X6{}}&\mbox{{}EX1{}}&
+ \mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}EX4{}}&\mbox{{}EX5{}}&
+ \mbox{{}EX6{}}&\mbox{{}ERROR{}}\cr 1&0&1.25&0&1.5&-0.5&1.5&0&1.25&0&
+ 1.5&0.5&1.5&1.5\cr 2&0.6875&1.125&0.6875&1.375&0.5625&1.375&0.6875&
+ 0.125&0.6875&0.125&1.0625&0.125&1.0625\cr }$$
+Solución aproximada $\left(0.6875,1.125,0.6875,1.375,0.5625,1.375\right)$.
+\section{ejercicio 3}
+Repita el ejercicio 1 usando el método de Gauss-Seidel.
+
+\subsection{inciso a)}
+\begin{eqnarray*}
+  10x_1-x_2&=&9,\\
+  -x_1+10x_2-2x_3&=&7,\\
+  -2x_2+10x_3&=&6.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([10,-1,0],[-1,10,-2],[0,-2,10]);
+b:matrix([9],[7],[6]);
+x_0:matrix([0,0,0]);
+gseidel(a,b,x_0,6,2);
+\end{verbatim}
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}EX1{}}&\mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}ERROR{}}\cr 1&
+ 0.9&0.79&0.758&0.9&0.79&0.758&0.9\cr 2&0.979&0.9495&0.7899&0.079&
+ 0.1595&0.0319&0.1595\cr }$$
+Solución aproximada $\left(0.979,0.9495,0.7899\right)$.
+
+\subsection{inciso d)}
+\begin{eqnarray*}
+  4x_1+x_2+x_3+x_5&=&6,\\
+  -x_1-3x_2+x_3+x_4&=&6,\\
+  2x_1+x_2+5x_3-x_4-x_5&=&6,\\
+  -x_1-x_2-x_3+4x_4&=&6,\\
+  2x_2-x_3+x_4+4x_5&=&6.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([4,1,1,0,6],[-1,-3,1,1,0],[2,1,5,-1,-1],[-1,-1,-1,4,0],[0,2,-1,1,4]);
+b:matrix([6],[6],[6],[6],[6]);
+x_0:matrix([0,0,0,0,0]);
+gseidel(a,b,x_0,6,2);
+\end{verbatim}
+{\tiny
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}X4{}}&\mbox{{}X5{}}&\mbox{{}EX1{}}&\mbox{{}EX2{}}&
+ \mbox{{}EX3{}}&\mbox{{}EX4{}}&\mbox{{}EX5{}}&\mbox{{}ERROR{}}\cr 1&
+ 1.5&-2.5&1.1&1.525&2.64375&1.5&2.5&1.1&1.525&2.64375&2.64375\cr 2&-
+ 2.115625&-0.4197917&2.96395833&1.60713542&2.04910156&3.615625&
+ 2.08020833&1.86395833&0.08213542&0.5946484&3.615625\cr }$$
+}
+Solución aproximada $\left(-2.115625,-0.4197917,2.96395833,1.60713542,2.04910156\right)$.
+
+\section{ejercicio 4}
+Repita el ejercicio 2 utilizando el método de Gauss-Seidel.
+
+\subsection{inciso b)}
+\begin{eqnarray*}
+  -2x_1+x_2+1/2x_3&=&4,\\
+  x_1-2x_2-1/2x_3&=&-4,\\
+  x_2+2x_3&=&0.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([-2,1,0.5],[1,-2,-0.5],[0,1,2]);
+b:matrix([4],[-4],[0]);
+x_0:matrix([0,0,0]);
+gseidel(a,b,x_0,6,2);
+\end{verbatim}
+
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}EX1{}}&\mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}ERROR{}}\cr 1&-
+ 2.0&1.0&-0.5&2.0&1.0&0.5&2.0\cr 2&-1.625&1.3125&-0.65625&0.375&
+ 0.3125&0.15625&0.375\cr }$$
+Solución aproximada $\left(-1.625,1.3125,-0.65625\right)$.
+
+\subsection{inciso d)}
+\begin{eqnarray*}
+  4x_1-x_2-x_4&=&0,\\
+  -x_1+4x_2-x_3-x_5&=&5,\\
+  -x_2+4x_3-x_6&=&0,\\
+  -x_1+4x_4-x_5&=&6,\\
+  -x_2-x_4+4x_5-x_6&=&-2,\\
+  -x_3-x_5+4x_6&=&6.
+\end{eqnarray*}
+
+\begin{verbatim}
+a:matrix([4,-1,0,-1,0,0],[-1,4,-1,0,-1,0],[0,-1,4,0,0,-1],
+[-1,0,0,4,-1,0],[0,-1,0,-1,4,-1],[0,0,-1,0,-1,4]);
+b:matrix([0],[5],[0],[6],[-2],[6]);
+x_0:matrix([0,0,0,0,0,0]);
+gseidel(a,b,x_0,6,2);
+\end{verbatim}
+{\tiny
+$$\pmatrix{\mbox{{}N{}}&\mbox{{}X1{}}&\mbox{{}X2{}}&\mbox{{}X3{}}&
+ \mbox{{}X4{}}&\mbox{{}X5{}}&\mbox{{}X6{}}&\mbox{{}EX1{}}&
+ \mbox{{}EX2{}}&\mbox{{}EX3{}}&\mbox{{}EX4{}}&\mbox{{}EX5{}}&
+ \mbox{{}EX6{}}&\mbox{{}ERROR{}}\cr 1&0&1.25&0.3125&1.5&0.1875&1.625&
+ 0&1.25&0.3125&1.5&0.1875&1.625&1.625\cr 2&0.6875&1.546875&0.7929688&
+ 1.71875&0.7226563&1.87890625&0.6875&0.296875&0.4804688&0.21875&
+ 0.5351563&0.2539063&0.6875\cr }$$
+}
+Solución aproximada $\left(0.6875,1.546857,0.7929688,1.71875,0.7226563,1.87890625\right)$.
+
+%%% Local Variables:
+%%% TeX-master: "tarea1"
+%%% End:

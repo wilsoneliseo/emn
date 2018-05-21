@@ -1,0 +1,102 @@
+\documentclass{book}
+
+\usepackage[activeacute, spanish]{babel}
+\spanishdecimal{.} % usar puntos en vez de comas en modo matematico
+\usepackage[utf8]{inputenc}
+
+\usepackage[sc]{mathpazo} % Usar fuente Palatino
+\usepackage[T1]{fontenc} % Usar codigicacion 8-bit
+\linespread{1.05} % Espacio de linea - Palatino necesita mas espacio entre lineas
+\usepackage{microtype} % Ajustar ligeramente el espaciado de letra
+                       % para la estética
+
+\usepackage{makeidx}
+\usepackage[hidelinks]{hyperref} % hidelinks elimina el recuadro en los enlaces
+\usepackage{graphicx} % Requerido para insertar imagenes
+\usepackage{eso-pic}     %permite poner una imagen de fondo
+\newcommand\imgFondo{%
+   \put(0,0){%
+     \parbox[b][\paperheight]{\paperwidth}{%
+       \vfill
+       \centering
+       \includegraphics{img/f.png}%
+       \vfill
+}}}
+\usepackage{float}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm]{geometry} % Margenes
+
+% ------------------------- ini-meta.tex -------------------------
+\usepackage{hyperref} %requerido para \hypersetup
+\hypersetup{
+  pdftitle={Tareas matematica aplicada 3, FIUSAC},
+  pdfauthor={Wilson S. Tubin},
+  pdfsubject={WeGT},
+  pdfcreator={https://wilsoneliseo.wordpress.com/},
+  pdfproducer={https://wilsoneliseo.wordpress.com/},
+  pdfkeywords={WeGT}
+}
+% ------------------------- fin-meta.tex -------------------------
+\author{Wilson S. Tubín \\ wilsoneliseogt@gmail.com}
+\title{Ejercicios, métodos numéricos. \\FIUSAC}
+\date{}
+
+
+\begin{document}
+\AddToShipoutPictureBG{\imgFondo}
+\maketitle
+
+Los ejercicios fueron tomados de libro titulado <<Análisis Numérico>> 
+novena edicion de Richard L. Burden y J. Douglas Faires.
+
+
+\chapter{Biseccion \\ 
+{\normalsize Ejercicios de Seccion 2.1, Pág. 54 }
+}
+\include{biseccion}
+
+\chapter{Punto fijo\\
+{\normalsize Ejercicios de Seccion 2.2, Pág. 64 }
+}
+\include{puntofijo}
+
+\chapter{Newton, Secante y Posicion falsa\\
+{\normalsize Ejercicios de Seccion 2.3, Pág. 75 }
+}
+\include{newtonSecantePosicfalsa}
+
+\chapter{Newton\\
+{\normalsize Ejercicios de Seccion 2.4, Pág. 85 }
+}
+\include{newton}
+
+\chapter{Steffensen\\
+{\normalsize Ejercicios de Seccion 2.5, Pág. 90 }
+}
+\include{steffensen}
+
+\chapter{Lagrange\\
+{\normalsize Ejercicios de Seccion 3.1, Pág.114 }
+}
+\include{lagrange}
+
+\chapter{Neville\\
+{\normalsize Ejercicios de Seccion 3.2, Pág.123 }
+}
+\include{neville}
+
+\chapter{Diferencias divididas Newton\\
+{\normalsize Ejercicios de Seccion 3.3, Pág.133 }
+}
+\include{difnewton}
+
+\chapter{Jacobi y Gauss-Seidel\\
+{\normalsize Ejercicios de Seccion 7.3, Pág.459 }
+}
+\include{jacobiYgseidel}
+
+\end{document}
+
+%%% Local Variables:
+%%% TeX-master: t
+%%% End:
+

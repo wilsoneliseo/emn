@@ -1,0 +1,17 @@
+#+TITLE:  Ejercicios Métodos Numéricos
+#+AUTHOR: Wilson S. Tubín
+#+DESCRIPTION: Ejercicios de métodos numéricos
+#+LANGUAGE: es
+#+CREATOR: https://wilsoneliseo.wordpress.com/
+
+Estos [[https://github.com/wilsoneliseo/emn/blob/master/emn.pdf][ejercicios de métodos numéricos]] fueron realizados con [[https://github.com/wilsoneliseo/maxima][paquetes]]
+de funciones para Maxima. Se utilizó la funcion =tex()= del mismo para
+exportar a LaTeX.
+
+Los ejercicios fueron tomados de libro titulado "Análisis Numérico"
+novena edicion de Richard L. Burden y J. Douglas Faires.
+
+En cada uno de los ejercicios estan indicados la sección, número de
+página, número de ejercicio e inciso correspondiente al libro.
+
+Maxima es genial.

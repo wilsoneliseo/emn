@@ -1,0 +1,647 @@
+% pagina 114 seccion 3.1 --> 1b, d, 5b,d, 6b, 9, 10, 12, 13b,d, 18, 19
+\section{ejercicio 1}
+Para las siguientes funciones $f(x)$, sea $x_0=0$, $x_1=0.6$ y
+$x_2=0.9$. Construir el polinomio de interpolación, de grado adecuado,
+para aproximar $f(0.45)$, y encuentre el error absoluto.
+
+
+\subsection{inciso b)}
+$f(x)=\sqrt{1+x}$
+
+\begin{verbatim}
+  f(x):=sqrt(1+x);
+  a:matrix([0,0.6]);
+  a:addrow(a,map(f,a));
+  polagrange(a);
+\end{verbatim}
+la tabla es 
+$$\pmatrix{0&0.6\cr 1.0&1.264911064067352\cr }$$
+haciendo los calculos
+
+$${{\mbox{{}(1.0){}}\,\left(x-\mbox{{}0.6{}}\right)}\over{
+ \mbox{{}0{}}-\mbox{{}0.6{}}}}+{{\mbox{{}(1.264911064067352){}}\,
+ \left(x-\mbox{{}0{}}\right)}\over{\mbox{{}0.6{}}-\mbox{{}0{}}}}={{
+ 8268424\,x+18727245}\over{18727245}}$$
+
+$$p\left(x\right)={{8268424\,x+18727245}\over{18727245}}$$
+$$p\left(0.45\right)=1.198683298050514$$
+$$f\left(0.45\right)=1.20415945787923$$
+
+$$
+error\;absoluto=|f(0.45)-p(0.45)|=0.0054761598287154
+$$
+
+\subsection{inciso d)}
+$f(x)=\tan(x)$
+
+\begin{verbatim}
+  f(x):=tan(x);
+  a:matrix([0,0.6]);
+  a:addrow(a,map(f,a));
+  polagrange(a);
+\end{verbatim}
+la tabla es 
+$$\pmatrix{0&0.6\cr 0&0.68413680834169\cr }$$
+haciendo los calculos
+$${{\mbox{{}(0){}}\,\left(x-\mbox{{}0.6{}}\right)}\over{\mbox{{}0{}}-
+ \mbox{{}0.6{}}}}+{{\mbox{{}(0.68413680834169){}}\,\left(x-
+ \mbox{{}0{}}\right)}\over{\mbox{{}0.6{}}-\mbox{{}0{}}}}={{8078723\,x
+ }\over{7085182}}$$
+$$p\left(x\right)={{8078723\,x}\over{7085182}}$$
+$$p\left(0.45\right)=0.51310260625627$$
+$$f\left(0.45\right)=0.48305506561658$$
+$$error\;absoluto=|f\left(0.45\right)-p\left(0.45\right)| =0.03004754063969$$
+
+\section{ejercicio 5}
+Use polinomios de interpolación de Lagrange de grados uno, dos y tres
+para aproximar lo siguiente:
+
+\subsection{inciso b)}
+$f\left(-1/3\right)$ con los datos
+$$\pmatrix{-0.75&-0.5&-0.25&0\cr -0.0718125&-0.02475&0.3349375&1.101
+ \cr }$$
+
+\subsubsection{Grado uno:}
+\begin{verbatim}
+  a:matrix([-0.5,-0.25],[-0.02475,0.3349375]);
+  polagrange(a);
+\end{verbatim}
+los datos a utilizar
+$$\pmatrix{-0.5&-0.25\cr -0.02475&0.3349375\cr }$$
+haciendo los calculos
+$${{\mbox{{}(0.3349375){}}\,\left(x-\mbox{{}-0.5{}}\right)}\over{
+ \mbox{{}-0.25{}}-\mbox{{}-0.5{}}}}+{{\mbox{{}(-0.02475){}}\,\left(x-
+ \mbox{{}-0.25{}}\right)}\over{\mbox{{}-0.5{}}-\mbox{{}-0.25{}}}}={{
+ 11510\,x+5557}\over{8000}}$$
+$$p\left(x\right)={{11510\,x+5557}\over{8000}}$$
+
+$$p\left(-{{1}\over{3}}\right)={{5161}\over{24000}}=0.21504166666667$$
+
+\subsubsection{Grado dos:}
+\begin{verbatim}
+  a:matrix([-0.5,-0.25,0],[-0.02475,0.3349375,1.101]);
+  polagrange(a);
+\end{verbatim}
+los datos a utilizar
+$$\pmatrix{-0.5&-0.25&0\cr -0.02475&0.3349375&1.101\cr }$$
+haciendo los calculos
+
+\begin{eqnarray}
+{{\mbox{{}0.3349375{}}\,\left(x-\mbox{{}-0.5{}}\right)\,\left(x-
+ \mbox{{}0{}}\right)}\over{\left(\mbox{{}-0.25{}}-\mbox{{}-0.5{}}
+ \right)\,\left(\mbox{{}-0.25{}}-\mbox{{}0{}}\right)}}+{{
+ \mbox{{}-0.02475{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}0{}}\right)}\over{\left(\mbox{{}-0.5{}}-\mbox{{}-0.25{}}
+ \right)\,\left(\mbox{{}-0.5{}}-\mbox{{}0{}}\right)}}+ \nonumber \\{{
+ \mbox{{}1.101{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}-0.5{}}\right)}\over{\left(\mbox{{}0{}}-\mbox{{}-0.25{}}
+ \right)\,\left(\mbox{{}0{}}-\mbox{{}-0.5{}}\right)}}={{3251\,x^2+
+ 3877\,x+1101}\over{1000}\nonumber}
+\end{eqnarray}
+$$p\left(x\right)={{3251\,x^2+3877\,x+1101}\over{1000}}$$
+$$p\left(-{{1}\over{3}}\right)={{1529}\over{9000}}=0.16988888888889$$
+
+\subsubsection{Grado tres:}
+\begin{verbatim}
+  a:matrix([-0.75,-0.5,-0.25,0],[-0.0718125,-0.02475,0.3349375,1.101]);
+  polagrange(a);
+\end{verbatim}
+se utiliza todos los datos de la tabla original
+$$\pmatrix{-0.75&-0.5&-0.25&0\cr -0.0718125&-0.02475&0.3349375&1.101
+ \cr }$$
+haciendo los calculos
+
+\begin{eqnarray}
+{{\mbox{{}0.3349375{}}\,\left(x-\mbox{{}-0.5{}}\right)\,\left(x-
+ \mbox{{}-0.75{}}\right)\,\left(x-\mbox{{}0{}}\right)}\over{\left(
+ \mbox{{}-0.25{}}-\mbox{{}-0.5{}}\right)\,\left(\mbox{{}-0.25{}}-
+ \mbox{{}-0.75{}}\right)\,\left(\mbox{{}-0.25{}}-\mbox{{}0{}}\right)
+ }}\nonumber \\+{{\mbox{{}-0.02475{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}-0.75{}}\right)\,\left(x-\mbox{{}0{}}\right)}\over{\left(
+ \mbox{{}-0.5{}}-\mbox{{}-0.25{}}\right)\,\left(\mbox{{}-0.5{}}-
+ \mbox{{}-0.75{}}\right)\,\left(\mbox{{}-0.5{}}-\mbox{{}0{}}\right)}}
+ \nonumber \\+{{\mbox{{}-0.0718125{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}-0.5{}}\right)\,\left(x-\mbox{{}0{}}\right)}\over{\left(
+ \mbox{{}-0.75{}}-\mbox{{}-0.25{}}\right)\,\left(\mbox{{}-0.75{}}-
+ \mbox{{}-0.5{}}\right)\,\left(\mbox{{}-0.75{}}-\mbox{{}0{}}\right)}}
+ \nonumber \\+{{\mbox{{}1.101{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}-0.5{}}\right)\,\left(x-\mbox{{}-0.75{}}\right)}\over{\left(
+ \mbox{{}0{}}-\mbox{{}-0.25{}}\right)\,\left(\mbox{{}0{}}-
+ \mbox{{}-0.5{}}\right)\,\left(\mbox{{}0{}}-\mbox{{}-0.75{}}\right)}} \nonumber \\=
+ {{1000\,x^3+4001\,x^2+4002\,x+1101}\over{1000}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)={{1000\,x^3+4001\,x^2+4002\,x+1101}\over{1000}}$$
+
+$$p\left(-{{1}\over{3}}\right)={{589}\over{3375}}=0.17451851851852$$
+
+\subsection{inciso d)}
+$f\left(0.9\right)$ con los datos
+$$\pmatrix{0.6&0.7&0.8&1.0\cr -0.1769446&0.01375227&0.22363362&
+ 0.65809197\cr }$$
+
+\subsubsection{Grado uno:}
+\begin{verbatim}
+  a:matrix([0.8,1.0],[0.22363362,0.65809197]);
+  polagrange(a);
+\end{verbatim}
+los datos a utilizar
+$$\pmatrix{0.8&1.0\cr 0.22363362&0.65809197\cr }$$
+haciendo los calculos
+$${{\mbox{{}(0.22363362){}}\,\left(x-\mbox{{}1.0{}}\right)}\over{
+\mbox{{}0.8{}}-\mbox{{}1.0{}}}}+{{\mbox{{}(0.65809197){}}\,\left(x-
+\mbox{{}0.8{}}\right)}\over{\mbox{{}1.0{}}-\mbox{{}0.8{}}}}={{
+368539439989973\,x-256891063989973}\over{169654670000000}}$$
+
+$$p\left(x\right)={{368539439989973\,x-256891063989973}\over{
+169654670000000}}$$
+
+$$p\left(0.9\right)=0.440862795$$
+
+\subsubsection{Grado dos:}
+\begin{verbatim}
+  a:matrix([0.7,0.8,1.0],[0.0138,0.224,0.658]);
+  polagrange(a);
+\end{verbatim}
+los datos a utilizar
+$$\pmatrix{0.7&0.8&1.0\cr 0.0138&0.224&0.658\cr }$$
+haciendo los calculos
+
+\begin{eqnarray}
+{{\mbox{{}0.01375227{}}\,\left(x-\mbox{{}0.8{}}\right)\,\left(x-
+ \mbox{{}1.0{}}\right)}\over{\left(\mbox{{}0.7{}}-\mbox{{}0.8{}}
+ \right)\,\left(\mbox{{}0.7{}}-\mbox{{}1.0{}}\right)}}+{{
+ \mbox{{}0.22363362{}}\,\left(x-\mbox{{}0.7{}}\right)\,\left(x-
+ \mbox{{}1.0{}}\right)}\over{\left(\mbox{{}0.8{}}-\mbox{{}0.7{}}
+ \right)\,\left(\mbox{{}0.8{}}-\mbox{{}1.0{}}\right)}}\nonumber\\+{{
+ \mbox{{}0.65809197{}}\,\left(x-\mbox{{}0.7{}}\right)\,\left(x-
+ \mbox{{}0.8{}}\right)}\over{\left(\mbox{{}1.0{}}-\mbox{{}0.7{}}
+ \right)\,\left(\mbox{{}1.0{}}-\mbox{{}0.8{}}\right)}}={{24492750\,x^
+ 2+173142225\,x-131825778}\over{100000000}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)={{24492750\,x^2+173142225\,x-131825778}\over{
+ 100000000}}$$
+
+$$p\left(0.9\right)=0.43841352$$
+
+\subsubsection{Grado tres:}
+\begin{verbatim}
+  a:matrix([0.6,0.7,0.8,1.0],[-0.1769446,0.01375227,0.22363362,0.65809197]);
+  polagrange(a);
+\end{verbatim}
+se utiliza los datos originales
+$$\pmatrix{0.6&0.7&0.8&1.0\cr -0.1769446&0.01375227&0.22363362& 0.65809197\cr }$$
+haciendo los calculos
+\begin{eqnarray}
+  {{\mbox{{}-0.1769446{}}\,\left(x-\mbox{{}0.7{}}\right)\,\left(x-
+ \mbox{{}0.8{}}\right)\,\left(x-\mbox{{}1.0{}}\right)}\over{\left(
+ \mbox{{}0.6{}}-\mbox{{}0.7{}}\right)\,\left(\mbox{{}0.6{}}-
+ \mbox{{}0.8{}}\right)\,\left(\mbox{{}0.6{}}-\mbox{{}1.0{}}\right)}}\nonumber\\+
+ {{\mbox{{}0.01375227{}}\,\left(x-\mbox{{}0.6{}}\right)\,\left(x-
+ \mbox{{}0.8{}}\right)\,\left(x-\mbox{{}1.0{}}\right)}\over{\left(
+ \mbox{{}0.7{}}-\mbox{{}0.6{}}\right)\,\left(\mbox{{}0.7{}}-
+ \mbox{{}0.8{}}\right)\,\left(\mbox{{}0.7{}}-\mbox{{}1.0{}}\right)}}\nonumber\\+
+ {{\mbox{{}0.22363362{}}\,\left(x-\mbox{{}0.6{}}\right)\,\left(x-
+ \mbox{{}0.7{}}\right)\,\left(x-\mbox{{}1.0{}}\right)}\over{\left(
+ \mbox{{}0.8{}}-\mbox{{}0.6{}}\right)\,\left(\mbox{{}0.8{}}-
+ \mbox{{}0.7{}}\right)\,\left(\mbox{{}0.8{}}-\mbox{{}1.0{}}\right)}}\nonumber\\+
+ {{\mbox{{}0.65809197{}}\,\left(x-\mbox{{}0.6{}}\right)\,\left(x-
+ \mbox{{}0.7{}}\right)\,\left(x-\mbox{{}0.8{}}\right)}\over{\left(
+ \mbox{{}1.0{}}-\mbox{{}0.6{}}\right)\,\left(\mbox{{}1.0{}}-
+ \mbox{{}0.7{}}\right)\,\left(\mbox{{}1.0{}}-\mbox{{}0.8{}}\right)}}\nonumber\\=
+ -{{357148250\,x^3-941856125\,x^2+389440945\,x+63648536}\over{
+ 200000000}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)=-{{357148250\,x^3-941856125\,x^2+389440945\,x+
+ 63648536}\over{200000000}}$$
+
+$$p\left(0.9\right)=0.4419850025$$
+
+\section{ejercicio 6}
+
+\subsection{inciso b)}
+Use la aproximación por polinomio de Lagrange de grados uno, dos y tres para
+$f(0)$ utilizando los datos:
+$$\pmatrix{-0.5&-0.25&0.25&0.5\cr 1.9375&1.33203&0.800781&0.6875\cr }$$
+
+\subsubsection{Grado 1:}
+\begin{verbatim}
+  a:matrix([-0.25,0.25],[1.33203,0.800781]);
+  polagrange(a);
+\end{verbatim}
+se toman dos pares de puntos adecuados para la aproximación
+$$\pmatrix{-0.25&0.25\cr 1.33203&0.800781\cr }$$
+haciendo los calculos
+$${{\mbox{{}(1.33203){}}\,\left(x-\mbox{{}0.25{}}\right)}\over{
+ \mbox{{}-0.25{}}-\mbox{{}0.25{}}}}+{{\mbox{{}(0.800781){}}\,\left(x-
+ \mbox{{}-0.25{}}\right)}\over{\mbox{{}0.25{}}-\mbox{{}-0.25{}}}}=-{{
+ 2124996\,x-2132811}\over{2000000}}$$
+
+$$p\left(x\right)=-{{2124996\,x-2132811}\over{2000000}}$$
+$$p\left(0\right)={{2132811}\over{2000000}}=1.0664055$$
+
+\subsubsection{Grado dos:}
+\begin{verbatim}
+  a:matrix([-0.25,0.25,0.5],[1.33203,0.800781,0.6875]);
+  polagrange(a);
+\end{verbatim}
+se escojen los puntos mas adecuados
+$$\pmatrix{-0.25&0.25&0.5\cr 1.33203&0.800781&0.6875\cr }$$
+haciendo los calculos
+
+\begin{eqnarray}
+  {{\mbox{{}1.33203{}}\,\left(x-\mbox{{}0.25{}}\right)\,\left(x-
+ \mbox{{}0.5{}}\right)}\over{\left(\mbox{{}-0.25{}}-\mbox{{}0.25{}}
+ \right)\,\left(\mbox{{}-0.25{}}-\mbox{{}0.5{}}\right)}}+{{
+ \mbox{{}0.800781{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}0.5{}}\right)}\over{\left(\mbox{{}0.25{}}-\mbox{{}-0.25{}}
+ \right)\,\left(\mbox{{}0.25{}}-\mbox{{}0.5{}}\right)}}\nonumber\\+{{
+ \mbox{{}0.6875{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}0.25{}}\right)}\over{\left(\mbox{{}0.5{}}-\mbox{{}-0.25{}}
+ \right)\,\left(\mbox{{}0.5{}}-\mbox{{}0.25{}}\right)}}={{2437496\,x^
+ 2-3187494\,x+3046873}\over{3000000}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)={{2437496\,x^2-3187494\,x+3046873}\over{3000000}}$$
+
+$$p\left(0\right)={{3046873}\over{3000000}}=1.015624333333334$$
+
+\subsubsection{Grado tres:}
+\begin{verbatim}
+  a:matrix([-0.5,-0.25,0.25,0.5],[1.9375,1.33203,0.800781,0.6875]);
+  polagrange(a);
+\end{verbatim}
+se utiliza las cuatro pares de puntos originales
+$$\pmatrix{-0.5&-0.25&0.25&0.5\cr 1.9375&1.33203&0.800781&0.6875\cr }$$
+haciendo los calculos
+\begin{eqnarray}
+  {{\mbox{{}1.33203{}}\,\left(x-\mbox{{}-0.5{}}\right)\,\left(x-
+ \mbox{{}0.25{}}\right)\,\left(x-\mbox{{}0.5{}}\right)}\over{\left(
+ \mbox{{}-0.25{}}-\mbox{{}-0.5{}}\right)\,\left(\mbox{{}-0.25{}}-
+ \mbox{{}0.25{}}\right)\,\left(\mbox{{}-0.25{}}-\mbox{{}0.5{}}\right)
+ }}\nonumber\\+{{\mbox{{}1.9375{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}0.25{}}\right)\,\left(x-\mbox{{}0.5{}}\right)}\over{\left(
+ \mbox{{}-0.5{}}-\mbox{{}-0.25{}}\right)\,\left(\mbox{{}-0.5{}}-
+ \mbox{{}0.25{}}\right)\,\left(\mbox{{}-0.5{}}-\mbox{{}0.5{}}\right)
+ }}\nonumber\\+{{\mbox{{}0.800781{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}-0.5{}}\right)\,\left(x-\mbox{{}0.5{}}\right)}\over{\left(
+ \mbox{{}0.25{}}-\mbox{{}-0.25{}}\right)\,\left(\mbox{{}0.25{}}-
+ \mbox{{}-0.5{}}\right)\,\left(\mbox{{}0.25{}}-\mbox{{}0.5{}}\right)
+ }}\nonumber\\+{{\mbox{{}0.6875{}}\,\left(x-\mbox{{}-0.25{}}\right)\,\left(x-
+ \mbox{{}-0.5{}}\right)\,\left(x-\mbox{{}0.25{}}\right)}\over{\left(
+ \mbox{{}0.5{}}-\mbox{{}-0.25{}}\right)\,\left(\mbox{{}0.5{}}-
+ \mbox{{}-0.5{}}\right)\,\left(\mbox{{}0.5{}}-\mbox{{}0.25{}}\right)
+ }}\nonumber\\=-{{1500016\,x^3-1968756\,x^2+1499996\,x-1476561}\over{1500000}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)=-{{1500016\,x^3-1968756\,x^2+1499996\,x-1476561}\over{1500000}}$$
+
+$$p\left(0\right)={{492187}\over{500000}}=0.984374$$
+
+\section{ejercicio 9}
+Sea $P_3(x)$ el polinomio de interpolación de los datos $(0,\,0)$,
+$(0.5,\;y)$, $(1,\;3)$ y $(2,\;2)$. El coeficiente de $x^3$ en
+$P_3(x)$ es $6$. Encuentre $y$.\\
+
+Haciendo las operaciones correspondientes a un polinomio de grado tres
+
+\begin{eqnarray}
+  {{\left(x-\mbox{{}0{}}\right)\,\left(x-\mbox{{}1{}}\right)\,\left(x
+ -\mbox{{}2{}}\right)\,y}\over{\left(\mbox{{}0.5{}}-\mbox{{}0{}}
+ \right)\,\left(\mbox{{}0.5{}}-\mbox{{}1{}}\right)\,\left(
+ \mbox{{}0.5{}}-\mbox{{}2{}}\right)}}\nonumber\\+{{\mbox{{}0{}}\,\left(x-
+ \mbox{{}0.5{}}\right)\,\left(x-\mbox{{}1{}}\right)\,\left(x-
+ \mbox{{}2{}}\right)}\over{\left(\mbox{{}0{}}-\mbox{{}0.5{}}\right)\,
+ \left(\mbox{{}0{}}-\mbox{{}1{}}\right)\,\left(\mbox{{}0{}}-
+ \mbox{{}2{}}\right)}}\nonumber\\+{{\mbox{{}3{}}\,\left(x-\mbox{{}0{}}\right)\,
+ \left(x-\mbox{{}0.5{}}\right)\,\left(x-\mbox{{}2{}}\right)}\over{
+ \left(\mbox{{}1{}}-\mbox{{}0{}}\right)\,\left(\mbox{{}1{}}-
+ \mbox{{}0.5{}}\right)\,\left(\mbox{{}1{}}-\mbox{{}2{}}\right)}}\nonumber\\+{{
+ \mbox{{}2{}}\,\left(x-\mbox{{}0{}}\right)\,\left(x-\mbox{{}0.5{}}
+ \right)\,\left(x-\mbox{{}1{}}\right)}\over{\left(\mbox{{}2{}}-
+ \mbox{{}0{}}\right)\,\left(\mbox{{}2{}}-\mbox{{}0.5{}}\right)\,
+ \left(\mbox{{}2{}}-\mbox{{}1{}}\right)}}\nonumber\\={{\left(8\,x^3-24\,x^2+16\,
+ x\right)\,y-16\,x^3+42\,x^2-17\,x}\over{3}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)={{\left(8\,x^3-24\,x^2+16\,x\right)\,y-16\,x^3+42\,
+ x^2-17\,x}\over{3}}$$
+
+luego se encuentra que el coeficiente de $x^3$ es $(8y-16)/3$
+que es quivalente a $6$ como lo indica el ejercicio:
+
+$$\frac{8y-16}{3}=6$$
+$$8y-16=18$$
+$$8y=18+16=34$$
+$$y=\frac{34}{8}=\frac{17}{4}=4.25$$
+
+\section{ejercicio 10}
+Sea $f\left(x\right)=\sqrt{x-x^2}$ y $P_2\left(x\right)$ el polinomio
+de interpolacion con $x_0=0$, $x_1$ y $x_2=1$. Encuentre el valor de
+$x_1$ en $(0,\;1)$ para que
+$f\left(0.5\right)-P_2\left(0.5\right)=-0.25$.
+
+Del enunciado se tiene
+$$f\left(0.5\right)-P_2\left(0.5\right)=-0.25$$
+evaluando la funcion $f$ en el valor $0.5$ se tiene $f(0.5)=0.5$, entonces
+$$f\left(0.5\right)+0.25=P_2\left(0.5\right)$$
+$$0.5+0.25=P_2\left(0.5\right)$$
+$$P_2\left(0.5\right)=0.75$$
+ahora si $x_1=m$ y $f(x_1)=\sqrt{x_1-x_1^2}=n$, haciendo la interpolación
+
+\begin{eqnarray}
+  {{\mbox{{}0{}}\,\left(x-\mbox{{}1{}}\right)\,\left(x-m\right)
+ }\over{\left(\mbox{{}0{}}-\mbox{{}1{}}\right)\,\left(\mbox{{}0{}}-m
+ \right)}}+{{\mbox{{}0{}}\,\left(x-\mbox{{}0{}}\right)\,\left(x-m
+ \right)}\over{\left(\mbox{{}1{}}-\mbox{{}0{}}\right)\,\left(
+ \mbox{{}1{}}-m\right)}}\nonumber\\+{{n\,\left(x-\mbox{{}0{}}\right)\,\left(x-
+ \mbox{{}1{}}\right)}\over{\left(m-\mbox{{}0{}}\right)\,\left(m-
+ \mbox{{}1{}}\right)}}={{n\,x^2-n\,x}\over{m^2-m}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)={{n\,x^2-n\,x}\over{m^2-m}}$$
+
+deshaciendo las sustituciones
+$$p\left(x\right)={{x^2\,\sqrt{{\it x_1}-{\it x_1}^2}-x\,\sqrt{{\it x_1}-{\it x_1}^2}}\over{{\it x_1}^2-{\it x_1}}}$$
+sabiendo que $P_2\left(0.5\right)=0.75$ se puede
+$${{x^2\,\sqrt{{\it x_1}-{\it x_1}^2}-x\,\sqrt{{\it x_1}-{\it x_1}^2}}\over{{\it x_1}^2-{\it x_1}}}=0.75$$
+de la misma fuente $P_2\left(0.5\right)=0.75$ se ve también que
+$x=0.5$, sustituyendo este último y luego simplificando el resultante
+$$-{{\sqrt{{\it x_1}-{\it x_1}^2}}\over{4\,{\it x_1}^2-4\,{\it x_1}}}=
+ {{3}\over{4}}$$
+
+aplicando el método de newton para encontrar $x_1$ se hace
+$$f\left(x_1\right)=-{{\sqrt{{\it x_1}-{\it x_1}^2}}\over{4\,{\it x_1}^2-4\,{\it x_1}}}-{{3}\over{4}}=0$$
+\begin{verbatim}
+f(x):=-sqrt(x-x^2)/(4*x^2-4*x)-3/4;
+newton(0.872,7,20);
+\end{verbatim}
+$$\pmatrix{N&{\it X\_n}&{\it X\_n}+1&{\it error}\cr 1&0.872&
+ 0.87268093&6.809250663 \times 10^{-4}\cr 2&0.87268093&0.872678&
+ 2.9287616645 \times 10^{-6}\cr 3&0.872678&0.872678&
+ 5.4665716398 \times 10^{-11}\cr }$$
+
+por tanto, $x_1$ vale $0.872678$
+
+\section{ejercicio 12}
+Utilice el polinomio de interpolación de Lagrange de grado tres o
+menos, aproximando a cuatro digitos, para calcular cos(0.750). Utilice
+los siguientes valores.
+$$\cos(0.698)=0.7661\quad \cos(0.733)=0.7432 \quad  \cos(0.768)=0.7193 \quad   \cos(0.803)=0.6946$$
+
+se va ha utilizar
+$$\pmatrix{0.733&0.768&0.803\cr 0.7432&0.7193&0.6946\cr }$$
+\begin{verbatim}
+  a:matrix([0.733,0.768,0.803],[0.7432,0.7193,0.6946]);
+  polagrange(a);
+\end{verbatim}
+
+\begin{eqnarray}
+  {{\mbox{{}0.7432{}}\,\left(x-\mbox{{}0.768{}}\right)\,\left(x-
+ \mbox{{}0.803{}}\right)}\over{\left(\mbox{{}0.733{}}-
+ \mbox{{}0.768{}}\right)\,\left(\mbox{{}0.733{}}-\mbox{{}0.803{}}
+ \right)}}+{{\mbox{{}0.7193{}}\,\left(x-\mbox{{}0.733{}}\right)\,
+ \left(x-\mbox{{}0.803{}}\right)}\over{\left(\mbox{{}0.768{}}-
+ \mbox{{}0.733{}}\right)\,\left(\mbox{{}0.768{}}-\mbox{{}0.803{}}
+ \right)}}\nonumber\\+{{\mbox{{}0.6946{}}\,\left(x-\mbox{{}0.733{}}\right)\,
+ \left(x-\mbox{{}0.768{}}\right)}\over{\left(\mbox{{}0.803{}}-
+ \mbox{{}0.733{}}\right)\,\left(\mbox{{}0.803{}}-\mbox{{}0.768{}}
+ \right)}}=-{{4000000\,x^2+2361000\,x-12983969}\over{12250000}\nonumber}
+\end{eqnarray}
+
+$$p\left(x\right)=-{{4000000\,x^2+2361000\,x-12983969}\over{12250000
+ }}$$
+
+$$p\left(0.75\right)=0.73169135$$
+
+\section{ejercicio 13}
+Construir los polinomios de interpolación de Lagrange para las siguientes
+funciones.
+
+
+
+\subsection{inciso b)}
+$f\left(x\right)=\sin(ln\;x) \quad x_0=2.0,\;x_1=2.4,\;x_2=2.6$
+\begin{verbatim}
+  a:matrix([2,2.4,2.6]);
+  ln(x):=log(x)/log(%e);
+  f(x):=sin(ln(x));
+  a:addrow(a,map(f,a));
+  polagrange(a);
+\end{verbatim}
+entonces tenemos los datos
+$$\pmatrix{2&2.4&2.6\cr 0.63896128&0.76784388&0.81660905\cr }$$
+haciendo la interpolación
+\begin{eqnarray}
+  {{\mbox{{}0.63896128{}}\,\left(x-\mbox{{}2.4{}}\right)\,\left(x-
+ \mbox{{}2.6{}}\right)}\over{\left(\mbox{{}2{}}-\mbox{{}2.4{}}\right)
+ \,\left(\mbox{{}2{}}-\mbox{{}2.6{}}\right)}}+{{\mbox{{}0.76784388{}}
+ \,\left(x-\mbox{{}2{}}\right)\,\left(x-\mbox{{}2.6{}}\right)}\over{
+ \left(\mbox{{}2.4{}}-\mbox{{}2{}}\right)\,\left(\mbox{{}2.4{}}-
+ \mbox{{}2.6{}}\right)}}\nonumber\\+{{\mbox{{}0.81660905{}}\,\left(x-
+ \mbox{{}2{}}\right)\,\left(x-\mbox{{}2.4{}}\right)}\over{\left(
+ \mbox{{}2.6{}}-\mbox{{}2{}}\right)\,\left(\mbox{{}2.6{}}-
+ \mbox{{}2.4{}}\right)}}=0.13063441\,x^2-0.89699789\,x+0.63249687 \nonumber
+\end{eqnarray}
+
+$$p\left(x\right)=0.13063441\,x^2-0.89699789\,x+0.63249687$$
+
+\subsection{inciso d)}
+$f\left(x\right)=\cos(x)+\sin(x),\quad x_0=0,\;x_1=0.25,\;x_2=0.5,\;x_3=1.0$. Los datos a utilizar son
+$$\pmatrix{0&0.25&0.5&1\cr 1&1.21631638&1.357008100&
+ 1.38177329\cr }$$
+
+
+\begin{verbatim}
+  a:matrix([0,0.25,0.5,1]);
+  f(x):=cos(x)+sin(x);
+  a:addrow(a,map(f,a));
+  polagrange(a);
+\end{verbatim}
+
+\begin{eqnarray}
+  {{\mbox{{}1{}}\,\left(x-\mbox{{}0.25{}}\right)\,\left(x-
+ \mbox{{}0.5{}}\right)\,\left(x-\mbox{{}1{}}\right)}\over{\left(
+ \mbox{{}0{}}-\mbox{{}0.25{}}\right)\,\left(\mbox{{}0{}}-
+ \mbox{{}0.5{}}\right)\,\left(\mbox{{}0{}}-\mbox{{}1{}}\right)}}\nonumber\\+{{
+ \mbox{{}1.2163{}}\,\left(x-\mbox{{}0{}}\right)\,\left(x-
+ \mbox{{}0.5{}}\right)\,\left(x-\mbox{{}1{}}\right)}\over{\left(
+ \mbox{{}0.25{}}-\mbox{{}0{}}\right)\,\left(\mbox{{}0.25{}}-
+ \mbox{{}0.5{}}\right)\,\left(\mbox{{}0.25{}}-\mbox{{}1{}}\right)}}\nonumber\\+
+ {{\mbox{{}1.357{}}\,\left(x-\mbox{{}0{}}\right)\,\left(x-
+ \mbox{{}0.25{}}\right)\,\left(x-\mbox{{}1{}}\right)}\over{\left(
+ \mbox{{}0.5{}}-\mbox{{}0{}}\right)\,\left(\mbox{{}0.5{}}-
+ \mbox{{}0.25{}}\right)\,\left(\mbox{{}0.5{}}-\mbox{{}1{}}\right)}}\nonumber\\+
+ {{\mbox{{}1.3818{}}\,\left(x-\mbox{{}0{}}\right)\,\left(x-
+ \mbox{{}0.25{}}\right)\,\left(x-\mbox{{}0.5{}}\right)}\over{\left(
+ \mbox{{}1{}}-\mbox{{}0{}}\right)\,\left(\mbox{{}1{}}-\mbox{{}0.25{}}
+ \right)\,\left(\mbox{{}1{}}-\mbox{{}0.5{}}\right)}}\\=-{{1192\,x^3+
+ 8178\,x^2-15097\,x-15000}\over{15000}}\nonumber
+\end{eqnarray}
+
+$$p\left(x\right)=-{{1192\,x^3+8178\,x^2-15097\,x-15000}\over{15000}}$$
+
+\section{ejercicio 18}
+
+\subsection{inciso a)}
+Un censo de la poblacion de Estados Unidos da los resultados en la siguiente
+tabla, en miles, desde 1950 a 200.
+$$\pmatrix{
+  Anio        & 1950   & 1960   & 1970   & 1980   &1990    & 2000   \cr 
+  Poblacion  & 151326 & 179323 & 203302 & 226542 & 249633 & 281422 \cr 
+}$$
+Use interpolacion de Lagrange para aproximar la poblacion en los años
+1940,1975 y 2020.
+
+\subsubsection{Para año 1940}
+datos a utilizar
+$$\pmatrix{1950&1960\cr 151326&179323\cr }$$
+haciendo los calculos
+\begin{verbatim}
+  a:matrix([1950,1960],[151326,179323])
+  polagrange(a);
+  p(1940);
+\end{verbatim}
+$${{\mbox{{}(151326){}}\,\left(x-\mbox{{}1960{}}\right)}\over{
+ \mbox{{}1950{}}-\mbox{{}1960{}}}}+{{\mbox{{}(179323){}}\,\left(x-
+ \mbox{{}1950{}}\right)}\over{\mbox{{}1960{}}-\mbox{{}1950{}}}}=0.1\,
+ \left(27997\,x-53080890\right)$$
+$$p\left(x\right)=0.1\,\left(27997\,x-53080890\right)$$
+$$p\left(1940\right)=123329.0$$
+
+\subsubsection{Para año 1975}
+datos a utilizar
+$$\pmatrix{1970&1980\cr 203302&226542\cr }$$
+haciendo los calculos
+\begin{verbatim}
+  a:matrix([1970,1980],[203302,226542]);
+  polagrange(a);
+  p(1975);
+\end{verbatim}
+$${{\mbox{{}(203302){}}\,\left(x-\mbox{{}1980{}}\right)}\over{
+ \mbox{{}1970{}}-\mbox{{}1980{}}}}+{{\mbox{{}(226542){}}\,\left(x-
+ \mbox{{}1970{}}\right)}\over{\mbox{{}1980{}}-\mbox{{}1970{}}}}=2324
+ \,x-4374978$$
+$$p\left(x\right)=2324\,x-4374978$$
+$$p\left(1975\right)=214922$$
+
+\subsubsection{Para año 2020}
+datos a utilizar
+$$\pmatrix{1990&2000\cr 249633&281422\cr }$$
+haciendo los calculos
+\begin{verbatim}
+  a:matrix([1990,2000],[249633,281422]);
+  polagrange(a);
+  p(2020);
+\end{verbatim}
+
+$${{\mbox{{}(249633){}}\,\left(x-\mbox{{}2000{}}\right)}\over{
+ \mbox{{}1990{}}-\mbox{{}2000{}}}}+{{\mbox{{}(281422){}}\,\left(x-
+ \mbox{{}1990{}}\right)}\over{\mbox{{}2000{}}-\mbox{{}1990{}}}}=0.1\,
+ \left(31789\,x-60763780\right)$$
+$$p\left(x\right)=0.1\,\left(31789\,x-60763780\right)$$
+$$p\left(2020\right)=345000.0$$
+
+\section{ejercicio 19}
+Se sospecha que las altas cantidades de tanino en las hojas del roble
+maduras inhiben el crecimiento, en invierno, de polilla, larvas que
+dañan mucho estos árboles en ciertos años. La siguiente tabla muestra
+el peso promedio de dos muestras de larvas en los primeros 28 días
+después del nacimiento. La primera muestra se crió en las hojas de
+roble jóvenes, mientras que la segunda muestra fue criados en hojas
+maduras del mismo árbol.
+
+\begin{itemize}
+\item[a)] Utilizar la interpolación de Lagrange para aproximar la curva
+  del peso promedio para cada muestra
+\item[b)] Encontrar un peso promedio máximo aproximado para cada muestra
+  por la determinación del máximo de la polinomio de interpolación.
+\end{itemize}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}[h]{l|ccccccc}
+    Dia              & 0    & 6      & 10     & 13    & 17    & 20    & 28\\
+    \hline
+    Muestra 1 (mg)   & 6.67 & 17.33  & 42.67  & 37.33 & 30.10 & 29.31 & 28.74 \\
+    Muestra 2 (mg)   & 6.67 & 16.11  & 18.89  & 15.00 & 10.56 & 9.44  & 8.89 
+  \end{tabular}
+  \caption{Peso promedio de dos muestras de larvas.}
+  \label{tab:1}
+\end{table}
+
+\subsection{inciso a)}
+Se escogen los puntos mas apropiados; aquellos en los que los pesos de la 
+\textbf{muestra uno} alcanzan sus puntos mas altos. Utilizando los datos:
+$$\pmatrix{6&10&13\cr 17.33&42.67&37.33\cr }$$
+
+\begin{verbatim}
+ a:matrix([6,10,13],[17.33,42.67,37.33]);
+ polagrange(a);
+\end{verbatim}
+
+\begin{eqnarray}
+{{\mbox{{}42.67{}}\,\left(x-\mbox{{}13{}}\right)\,\left(x-
+ \mbox{{}6{}}\right)}\over{\left(\mbox{{}10{}}-\mbox{{}13{}}\right)\,
+ \left(\mbox{{}10{}}-\mbox{{}6{}}\right)}}+{{\mbox{{}37.33{}}\,\left(
+ x-\mbox{{}10{}}\right)\,\left(x-\mbox{{}6{}}\right)}\over{\left(
+ \mbox{{}13{}}-\mbox{{}10{}}\right)\,\left(\mbox{{}13{}}-\mbox{{}6{}}
+ \right)}}\nonumber\\+{{\mbox{{}17.33{}}\,\left(x-\mbox{{}10{}}\right)\,\left(x-
+ \mbox{{}13{}}\right)}\over{\left(\mbox{{}6{}}-\mbox{{}10{}}\right)\,
+ \left(\mbox{{}6{}}-\mbox{{}13{}}\right)}}=-
+ 7.14285 \times 10^{-4}\,\left(1623\,x^2-34837\,x+126332
+ \right)\nonumber
+ \end{eqnarray}
+
+$$p\left(x\right)=-7.14285714 \times 10^{-4}\,\left(1623\,x^2
+ -34837\,x+126332\right)$$
+
+Se escogen los puntos mas apropiados; aquellos en los que los pesos de la 
+\textbf{muestra dos} alcanzan sus puntos mas altos. Utilizando los datos:
+$$\pmatrix{6&10&13\cr 16.11&18.89&15\cr }$$
+
+\begin{verbatim}
+  a:matrix([6,10,13],[16.11,18.89,15]);
+  polagrange(a);
+\end{verbatim}
+
+\begin{eqnarray}
+{{\mbox{{}18.89{}}\,\left(x-\mbox{{}13{}}\right)\,\left(x-
+ \mbox{{}6{}}\right)}\over{\left(\mbox{{}10{}}-\mbox{{}13{}}\right)\,
+ \left(\mbox{{}10{}}-\mbox{{}6{}}\right)}}+{{\mbox{{}15{}}\,\left(x-
+ \mbox{{}10{}}\right)\,\left(x-\mbox{{}6{}}\right)}\over{\left(
+ \mbox{{}13{}}-\mbox{{}10{}}\right)\,\left(\mbox{{}13{}}-\mbox{{}6{}}
+ \right)}}\nonumber\\+{{\mbox{{}16.11{}}\,\left(x-\mbox{{}10{}}\right)\,\left(x-
+ \mbox{{}13{}}\right)}\over{\left(\mbox{{}6{}}-\mbox{{}10{}}\right)\,
+ \left(\mbox{{}6{}}-\mbox{{}13{}}\right)}}=-
+ 2.38095 \times 10^{-4}\,\left(1195\,x^2-22039\,x+21552
+ \right)\nonumber
+\end{eqnarray}
+
+$$p\left(x\right)=-2.380952 \times 10^{-4}\,\left(1195\,x^2-
+ 22039\,x+21552\right)$$
+
+\subsection{inciso b)}
+Para la muestra uno
+$${{d}\over{d\,x}}\,\left(-7.1428 \times 10^{-4}\,\left(
+ 1623\,x^2-34837\,x+126332\right)\right)=-
+ 7.142857 \times 10^{-4}\,\left(3246\,x-34837\right)$$
+
+$$p\,'\left(x\right)=- 7.142857 \times 10^{-4}\,\left(3246\,x-34837\right)=0$$
+$$x = 10.73228589032656$$
+$$p\left(10.73228589032656\right)=43.29165841475221$$
+
+Para la muestra dos
+$${{d}\over{d\,x}}\,\left(-2.3809 \times 10^{-4}\,\left(
+ 1195\,x^2-22039\,x+21552\right)\right)=-
+ 2.38095 \times 10^{-4}\,\left(2390\,x-22039\right)$$
+
+$$p\,'\left(x\right)=-2.38095 \times 10^{-4}\,\left(2390\,x-22039\right)=0$$
+$$x = 9.221338912133891$$
+$$p\left(19.06251051006176\right)=19.06251051006176$$
+
+%%% Local Variables:
+%%% TeX-master: "tarea1"
+%%% End:

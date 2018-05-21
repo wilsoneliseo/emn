@@ -1,0 +1,405 @@
+\section{ejercicio 1}
+
+Use el metodo de Neville para obtener la aproximación de polinomio de
+interpolación de Lagrange de grados uno, dos y tres para los siguientes
+ejercicios.
+
+\subsection{inciso b)}
+$f\left(-1/3\right)$ con los datos
+$$\pmatrix{-0.75&-0.5&-0.25&0\cr -0.0718125&-0.02475&0.3349375&1.101
+ \cr }$$
+
+
+\subsubsection{grado 1}
+usando los datos
+$$\pmatrix{-0.5&-0.25\cr -0.02475&0.3349375\cr }$$
+\begin{verbatim}
+a:transpose(matrix([-0.5,-0.25],[-0.02475000,0.33493750]));
+neville(-1/3,a);
+\end{verbatim}
+
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}\cr -0.5&-
+ 0.02475&0\cr -0.25&0.3349375&0.21504166666667\cr }$$
+
+
+\subsubsection{grado 2}
+usando los datos
+$$\pmatrix{-0.75&-0.5&-0.25\cr -0.0718125&-0.02475&0.3349375\cr }$$
+
+\begin{verbatim}
+a:matrix([-0.75,-0.5,-0.25],[-0.07181250,-0.02475000,0.33493750]);
+neville(-1/3,a);
+\end{verbatim}
+
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}\cr -0.75&-0.0718125&0&0\cr -0.5&-0.02475&
+ 0.006625&0\cr -0.25&0.3349375&0.21504166666667&0.18030555555556\cr }$$
+
+
+\subsubsection{grado 3}
+usando los datos
+
+$$\pmatrix{-0.75&-0.5&-0.25&0\cr -0.0718125&-0.02475&0.3349375&1.101
+ \cr }$$
+
+
+\begin{verbatim}
+a:matrix([-0.75,-0.5,-0.25,0],[-0.07181250,-0.02475000,0.33493750,1.10100000]);
+neville(-1/3,a);
+\end{verbatim}
+
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}&\mbox{{}Columna 3{}}\cr -0.75&-0.0718125&0&0&0
+ \cr -0.5&-0.02475&0.006625&0&0\cr -0.25&0.3349375&0.21504166666667&
+ 0.18030555555556&0\cr 0&1.101&0.079583333333333&0.16988888888889&
+ 0.17451851851852\cr }$$
+
+\subsection{inciso d)}
+
+$f\left(0.9\right)$ con los datos
+$$\pmatrix{0.6&0.7&0.8&1.0\cr -0.1769446&0.01375227&0.22363362&
+ 0.65809197\cr }$$
+
+
+\subsubsection{grado 1}
+usando 
+$$\pmatrix{0.8&1.0\cr 0.22363362&0.65809197\cr }$$
+
+\begin{verbatim}
+a:transpose(matrix([0.8,1.0],[0.22363362,0.65809197]));
+neville(0.9,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}\cr 0.8&
+ 0.22363362&0\cr 1.0&0.65809197&0.440862795\cr }$$
+
+
+\subsubsection{grado 2}
+usando
+$$\pmatrix{0.7&0.8&1.0\cr 0.01375227&0.22363362&0.65809197\cr }$$
+
+\begin{verbatim}
+a:matrix([0.7,0.8,1.0],[0.01375227,0.22363362,0.65809197]);
+neville(0.9,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}\cr 0.7&0.01375227&0&0\cr 0.8&0.22363362&
+ 0.43351497&0\cr 1.0&0.65809197&0.440862795&0.43841352\cr }$$
+
+
+\subsubsection{grado 3}
+usando
+$$\pmatrix{0.6&0.7&0.8&1.0\cr -0.1769446&0.01375227&0.22363362&
+ 0.65809197\cr }$$
+
+\begin{verbatim}
+a:matrix([0.6,0.7,0.8,1.0],[-0.17694460,0.01375227,0.22363362,0.65809197]);
+neville(0.9,a);
+\end{verbatim}
+
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}&\mbox{{}Columna 3{}}\cr 0.6&-0.1769446&0&0&0
+ \cr 0.7&0.01375227&0.39514601&0&0\cr 0.8&0.22363362&0.43351497&
+ 0.45269945&0\cr 1.0&0.65809197&0.440862795&0.43841352&0.4419850025
+ \cr }$$
+
+\section{ejercicio 2}
+
+Use el método de neville para obtener la aproximación por polinomio de
+interpolación de Lagrange de grados uno, dos y tres para los
+siguientes incisos.
+
+\subsection{inciso a)}
+$f\left(0.43\right)$ con los datos
+$$\pmatrix{0&0.25&0.5&0.75\cr 1&1.64872&2.71828&4.48169\cr }$$
+
+\subsubsection{grado 1}
+usando
+$$\pmatrix{0.25&0.5\cr 1.64872&2.71828\cr }$$
+\begin{verbatim}
+a:transpose(matrix([0.25,0.5],[1.64872,2.71828]));
+neville(0.43,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}\cr 0.25&
+ 1.64872&0\cr 0.5&2.71828&2.4188032\cr }$$
+
+
+\subsubsection{grado 2}
+usando
+$$\pmatrix{0.25&0.5&0.75\cr 1.64872&2.71828&4.48169\cr }$$
+\begin{verbatim}
+a:matrix([0.25,0.5,0.75],[1.64872,2.71828,4.48169]);
+neville(0.43,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}\cr 0.25&1.64872&0&0\cr 0.5&2.71828&2.4188032&0
+ \cr 0.75&4.48169&2.2245252&2.34886312\cr }$$
+
+
+\subsubsection{grado 3}
+usando
+$$\pmatrix{0&0.25&0.5&0.75\cr 1&1.64872&2.71828&4.48169\cr }$$
+\begin{verbatim}
+a:matrix([0,0.25,0.5,0.75],[1,1.64872,2.71828,4.48169]);
+neville(0.43,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}&\mbox{{}Columna 3{}}\cr 0&1&0&0&0\cr 0.25&
+ 1.64872&2.1157984&0&0\cr 0.5&2.71828&2.4188032&2.376382528&0\cr 0.75
+ &4.48169&2.2245252&2.34886312&2.36060473408\cr }$$
+
+\subsection{inciso d)}
+$f\left(0.25\right)$ con los datos
+$$\pmatrix{-1&-0.5&0&0.5\cr 0.8619948&0.95802009&1.0986123&1.2943767
+ \cr }$$
+
+\subsubsection{grado 1}
+usando
+$$\pmatrix{0&0.5\cr 1.0986123&1.2943767\cr }$$
+\begin{verbatim}
+a:transpose(matrix([0,0.5],[1.0986123,1.2943767]));
+neville(0.25,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}\cr 0&
+ 1.0986123&0\cr 0.5&1.2943767&1.1964945\cr }$$
+
+\subsubsection{grado 2}
+usuando
+$$\pmatrix{-0.5&0&0.5\cr 0.95802009&1.0986123&1.2943767\cr }$$
+\begin{verbatim}
+a:matrix([-0.5,0 ,0.5],[0.95802009,1.0986123,1.2943767]);
+neville(0.25,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}\cr -0.5&0.95802009&0&0\cr 0&1.0986123&
+ 1.168908405&0\cr 0.5&1.2943767&1.1964945&1.18959797625\cr }$$
+
+\subsubsection{grado 3}
+usando
+$$\pmatrix{-1&-0.5&0&0.5\cr 0.8619948&0.95802009&1.0986123&1.2943767
+ \cr }$$
+\begin{verbatim}
+a:matrix([-1,-0.5,0 ,0.5],[0.86199480,0.95802009,1.0986123,1.2943767]);
+neville(0.25,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}&\mbox{{}Columna 3{}}\cr -1&0.8619948&0&0&0\cr -
+ 0.5&0.95802009&1.102058025&0&0\cr 0&1.0986123&1.168908405&1.185621&0
+ \cr 0.5&1.2943767&1.1964945&1.18959797625&1.188935146875\cr }$$
+
+\section{ejercicio 3}
+
+\subsection{inciso b}
+Use el metodo de neville para aproximar $\sqrt{3}$ con
+$f\left(x\right)=\sqrt{x}$ y los valores $x_0=0$, $x_1=1$, $x_2=2$,
+$x_3=4$ y $x_4=5$.
+
+Entonces los datos a utilizar son
+$$\pmatrix{0&1&2&4&5\cr 0.0&1.0&1.4142135&2.0&
+ 2.23606\cr }$$
+
+\begin{verbatim}
+a:matrix([0,1,2,4,5]);
+f(x):=sqrt(x);
+a:addrow(a, map(f,a));
+neville(3,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}&\mbox{{}Columna 3{}}&\mbox{{}Columna 4{}}\cr 0&
+ 0.0&0&0&0&0\cr 1&1.0&3.0&0&0&0\cr 2&1.414213562373095&
+ 1.82842712474619&1.242640687119286&0&0\cr 4&2.0&1.707106781186548&
+ 1.747546895706429&1.621320343559643&0\cr 5&2.23606797749979&
+ 1.76393202250021&1.726048528291102&1.736797711998765&
+ 1.690606764623116\cr }$$
+
+\section{ejercicio 5}
+
+El metodo de neville es usado para aproximar $f\left(0.4\right)$,
+obteniendo la siguiente tabla:
+
+\noindent\rule{\linewidth}{0.4pt}
+\[
+\begin{array}{lllll}
+  x_0=0    & P_0=1 &             &                &\\
+  x_1=0.25 & P_1=2 & P_{0,1}=2.6 &                &\\
+  x_2=0.5  & P_2   & P_{1,2}     & P_{0,1,2}      &\\
+  x_3=0.75 & P_3=8 & P_{2,3}=2.4 & P_{1,2,3}=2.96 & P_{0,1,2,3}=3.016
+\end{array}
+\]
+\rule{\linewidth}{0.4pt}\\
+
+Determine $P_2=f\left(0.5\right)$.\\
+
+\textbf{Solución:} Se introduce la matrix
+$$\pmatrix{0&0.25&0.5&0.75\cr 1&2&m&8\cr }$$
+en la funcion \textit{neville}
+
+\begin{verbatim}
+a:matrix([0,0.25,0.5,0.75],[1,2,m,8]);
+neville(0.4,a);
+\end{verbatim}
+
+{\tiny
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}&\mbox{{}Columna 3{}}\cr 0&1&0&0&0\cr 0.25&2&2.6
+ &0&0\cr 0.5&m&4.0\,\left(0.15\,m+0.2\right)&2.0\,\left(1.6\,\left(
+ 0.15\,m+0.2\right)+0.26\right)&0\cr 0.75&8&4.0\,\left(0.35\,m-0.8
+ \right)&2.0\,\left(0.6\,\left(0.35\,m-0.8\right)+1.4\,\left(0.15\,m+
+ 0.2\right)\right)&1.33\,\left(0.8\,\left(0.6\,\left(
+ 0.35\,m-0.8\right)+1.4\,\left(0.15\,m+0.2\right)\right)+0.7\,\left(
+ 1.6\,\left(0.15\,m+0.2\right)+0.26\right)\right)\cr }$$
+}
+
+
+observando estos resultados (columna 1) con la tabla se puede igualar
+
+$$2.0\,\left(0.6\,\left(0.35\,m-0.8\right)+1.4\,\left(0.15\,m+
+ 0.2\right)\right)=2.96$$
+
+luego despejando \textit{m} se encuentra que 
+
+$$m=4$$
+
+luego $P_2=f\left(0.5\right)=4$.
+
+\section{ejercicio 6}
+El metodo de neville es usado para aproximar $f\left(0.4\right)$,
+obteniendo la siguiente tabla:
+
+\noindent\rule{\linewidth}{0.4pt}
+\[
+\begin{array}{llll}
+  x_0=0    & P_0=0   &             &                \\
+  x_1=0.4  & P_1=2.8 & P_{0,1}=3.5  &                \\
+  x_2=0.7  & P_2     & P_{1,2}      & P_{0,1,2}=27/7   
+\end{array}
+\]
+\rule{\linewidth}{0.4pt}\\
+
+Determine $P_2=f\left(0.7\right)$.\\
+
+\textbf{Solución:} Se introduce la matrix
+$$\pmatrix{0&0.4&0.7\cr 0&2.8&m\cr }$$
+
+\begin{verbatim}
+a:matrix([0,0.4,0.7],[0,2.8,m]);
+neville(0.5,a);
+\end{verbatim}
+$$\pmatrix{\mbox{{}X{}}&\mbox{{}Y{}}&\mbox{{}Columna 1{}}&
+ \mbox{{}Columna 2{}}\cr 0&0&0&0\cr 0.4&2.8&3.5&0\cr 0.7&m&
+ 3.333334\,\left(0.1\,m+0.56\right)&1.428571\,
+ \left(1.6666667\,\left(0.1\,m+0.56\right)+0.7\right)\cr }$$
+
+observando estos resultados (columna 2) con la tabla se puede igualar
+$$1.428571\, \left(1.6666667\,\left(0.1\,m+0.56\right)+0.7\right)=27/7$$
+despejando de aquí \textit{m} se tiene
+
+$$m=6.4$$
+
+luego $P_2=f\left(0.7\right)=6.4$
+
+\section{ejercicio 9}
+
+Algoritmo de Neville se utiliza para aproximar $f\left(0\right)$
+usando $f\left(-2\right)$, $f\left(-1\right)$, $f\left(1\right)$, y
+$f\left(2\right)$. Suponer $f\left(-1\right)$ fue estimado en $2$ y
+$f\left(1\right)$ en $3$. Determinar el error en el
+cálculo original del valor de la polinomio de interpolación a la
+aproximación de $f\left(0\right)$.
+
+$$-\frac{f\left(2\right)}{6}+2\frac{f\left(1\right)}{3}+2\frac{f\left(-1\right)}{3}-\frac{f\left(-2\right)}{6}$$
+
+\section{ejercicio 12}
+
+Use iteraciones inversas de interpolación para buscar una aproximación
+de la solución de $x-e^{-x}=0$, usando los datos
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l|llll}
+    x&0.3&0.4&0.5&0.6\\
+    \hline
+    $e^{-x}$& 0.740818&0.670320&0.606531&0.548812
+  \end{tabular}
+\end{table}
+
+la solución de la ecuación es un $n$ tal que al evaluar en $e^{-x}$ da
+el mismo $n$, de esa forma la expresión al que se le busca la solución
+($x-e^{-x}=0$) quede de la forma n-n=0.
+
+Por lo tanto hay que interpolar $n$ con los datos
+$$\pmatrix{0.3&0.4&0.5&0.6\cr 0.740818&0.67032&0.606531&0.548812\cr }$$
+y sabiendo que la aproximación de $f(n)$ resultante debe ser igual a
+$n$, se despeja $n$.
+
+\begin{verbatim}
+a: matrix([0.3,0.4,0.5,0.6],[0.740818,0.67032,0.606531,0.548812]);
+neville(n,a);
+\end{verbatim}
+
+\textbf{Columna 1}
+\[
+10.0\,\left(0.67032\,\left(n-0.3\right)-0.740818\,\left(
+    n-0.4\right)\right)
+\]
+
+\[
+10.0\,\left(0.606531\,\left(n-0.4\right)-0.67032\,\left(n-0.5\right)\right)
+\]
+
+\[
+10.0\,\left(0.548812\,\left(n-0.5\right)-0.606531\,
+  \left(n-0.6\right)\right)
+\]
+
+\textbf{Columna 2}
+
+\[
+\begin{array}{l}
+5.0\,(10.0\,(0.606531\,(n-0.4)-0.67032\,(n-0.5))\,(n-0.3)\\
+-10.0\,(0.67032\,(n-0.3)-0.740818\,(n-0.4))\,(n-0.5))
+\end{array}
+\]
+
+\[
+\begin{array}{l}
+ 5.0\,(10.0\,(0.548812\,(n-0.5)-0.606531\,(n-0.6))\,(n-0.4)\\
+-10.0\,(0.606531\,(n-0.4)-0.67032\,(n-0.5))\,(n-0.6))
+\end{array}
+\]
+
+\textbf{Columna 3}
+\[
+\begin{array}{l}
+3.3333333\,(5.0\,(10.0\,(0.548812\,(n-0.5)-0.606531\,(n-0.6))\,(n-0.4)\\
+-10.0\,(0.606531\,(n-0.4)-0.67032\,(n-0.5))\,(n-0.6))\,(n-0.3)-5.0\,(10.0\,(0.606531\,(n-0.4)\\
+-0.67032\,(n-0.5))\,(n-0.3)-10.0\,(0.67032\,(n-0.3)-0.740818\,(n-0.4))\,(n-0.5))\,(n-0.6))
+\end{array}
+\]
+
+Por lo tanto aproximación de $f(n)$ resultante debe ser igual a
+$n$ y luego se despeja $n$
+
+\[
+\begin{array}{l}
+3.3333333\,(5.0\,(10.0\,(0.548812\,(n-0.5)-0.606531\,(n-0.6))\,(n-0.4)\\
+-10.0\,(0.606531\,(n-0.4)-0.67032\,(n-0.5))\,(n-0.6))\,(n-0.3)-5.0\,(10.0\,(0.606531\,(n-0.4)\\
+-0.67032\,(n-0.5))\,(n-0.3)-10.0\,(0.67032\,(n-0.3)-0.740818\,(n-0.4))\,(n-0.5))\,(n-0.6))=n
+\end{array}
+\]
+
+despejando $n$ se obtiene
+
+\[
+\begin{array}{l}
+n_1=-2.5199847\,(0.866025\,i-0.5)+1.6372081\,(-0.866025\,i-0.5)+1.4499218\\
+n_2=1.6372081\,(0.866025\,i-0.5)-2.5199847\,(-0.866025\,i-0.5)+1.4499218\\
+n_3=0.567145
+\end{array}
+\]
+
+Entonces la solucion de la expresión $x-e^{-x}=0$ es $0.567145$
+
+
+%%% Local Variables: 
+%%% TeX-master: "tarea1"
+%%% End: 

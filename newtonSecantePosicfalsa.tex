@@ -1,0 +1,472 @@
+\section{ejercicio 1}
+Sea $f(x)=x^2-6$ y $p_0=1$. Use el método de Newton para encontrar $p_2$.
+$$
+f\,'(x)=2\,x
+$$
+\begin{verbatim}
+f(x):=x^2-6;
+newton(1,4,2);
+\end{verbatim}
+$$
+\pmatrix{
+N& X_n& X_{n+1}&error\cr 
+1&1&3.5&2.5\cr 
+2&3.5&2.607143&0.89286\cr 
+}
+$$
+
+\section{ejercicio 3}
+Sea $f(x)=x^2-6$. Con $p_0=3$ y $p_1=2$, buscar $p_3$.
+
+\subsection{inciso a)}
+Usando el método de la secante.
+\begin{verbatim}
+f(x):=x^2-6;
+secante(3,2,4,3);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n&X_{n+1}& error\cr 1&3&
+ 2&2.4&0.4\cr 2&2&2.4&2.454545&0.054545\cr 3&2.4&2.454545&2.449438&
+ 0.0051073\cr }$$
+
+\subsection{inciso b)}
+Usando el método de posicion falsa.
+\begin{verbatim}
+posicionfalsa(3,2,4,3);
+\end{verbatim}
+$$\pmatrix{N&X_{n-1}&X_n&X_{n+1}&error\cr 1&3&
+ 2&2.4&0.4\cr 2&3&2.4&2.444444&0.044444\cr 3&3&2.444444&2.44898&
+ 0.0045351\cr }$$
+
+\subsection{inciso c)}
+El inciso a) o el inciso b) está mas cerca de $\sqrt{6}\,$?\\
+
+R// Por el método de la secante $p_3=2.449438$  y por el método de 
+posición falsa $p_3=2.44898$. Dado que $\sqrt{6}=2.4494897427$ decimos
+que el inciso a) por el método de la secante es más exacto.
+
+\section{ejercicio 5}
+Use el método de Newton para encontrar la solucion con una tolerancia $10^{-4}$ 
+para los siguientes problemas.
+\subsection{inciso a)}
+Para $f(x)=x^3-2x^2-5=0$ en el intervalo $[1,\,4]$.
+$$
+  f\,'(x)=3\,x^2-4\,x
+$$
+\begin{verbatim}
+f(x):=x^3-2*x^2-5;
+newton(2.5,4,20);
+\end{verbatim}
+
+$$\pmatrix{N&X_n&X_{n+1}& error\cr 1&2.5&2.714286&
+ 0.21429\cr 2&2.714286&2.690952&0.023334\cr 3&2.690952&2.690647&
+ 3.0401747 \times 10^{-4}\cr 4&2.690647&2.690647&
+ 5.1228279 \times 10^{-8}\cr }$$
+
+\subsection{inciso c)}
+Para $f(x)=x-cos(x)=0$ en el intervalo $[0,\,\pi/2]$.
+$$
+f\,'(x)=sin(x)+1
+$$
+
+\begin{verbatim}
+f(x):=x-cos(x);
+newton(0,4,20);
+\end{verbatim}
+
+$$\pmatrix{N&X_n&X_{n+1}& error\cr 1&0&1.0&1.0\cr 2&
+ 1.0&0.75036&0.24964\cr 3&0.75036&0.73911&0.011251\cr 4&0.73911&
+ 0.73909&2.7757526 \times 10^{-5}\cr }$$
+
+\section{ejercicio 6}
+Use el método de Newton para encontrar la solución con una tolerancia $10^{-5}$
+para los siguientes problemas
+\subsection{inciso b)}
+Para $f(x)=ln(x-1)+cos(x-1)=0$ en el intervalo $[1.3,\,2]$
+$$
+f\,'(x)={{1.0}\over{x-1}}-\sin \left(x-1\right)
+$$
+
+\begin{verbatim}
+f(x):=ln(x-1)+cos(x-1);
+newton(1.3, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_n& X_{n+1}&error\cr 1&1.3&1.3818471&
+ 0.0818471\cr 2&1.3818471&1.3973207&0.0154736\cr 3&1.3973207&
+ 1.3977482&4.27431534 \times 10^{-4}\cr 4&1.3977482&1.3977485&
+ 3.1148496 \times 10^{-7}\cr }$$
+
+\subsection{inciso e)}
+Para $f(x)=e^x-3x^2=0$ en el intervalo $[0,\,1]$ y $[3,\,5]$.
+$$
+f\,'(x)=e^{x}-6\,x
+$$
+
+\subsubsection{intervalo[0, 1]}
+$$
+f\,'(x)=e^{x}-6\,x
+$$
+
+\begin{verbatim}
+f(x):=%e^x-3*x^2;
+newton(0.5, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N&X_n&X_{n+1}& error\cr 1&0.5&1.1650895&
+ 0.665089\cr 2&1.1650895&0.936227&0.228863\cr 3&0.936227&0.910397&
+ 0.0258303\cr 4&0.910397&0.910008&3.89003009 \times 10^{-4}\cr 5&
+ 0.910008&0.910008&8.93744134 \times 10^{-8}\cr }$$
+
+\subsubsection{intervalo[3,5]}
+$$
+f\,'(x)=e^{x}-6\,x
+$$
+
+\begin{verbatim}
+f(x):=%e^x-3*x^2;
+newton(3, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N&X_n&X_{n+1}& error\cr 1&3&6.3154355&
+ 3.3154355\cr 2&6.3154355&5.4741495&0.841286\cr 3&5.4741495&4.7516461
+ &0.722503\cr 4&4.7516461&4.2011347&0.550511\cr 5&4.2011347&3.868723&
+ 0.332412\cr 6&3.868723&3.7479169&0.120806\cr 7&3.7479169&3.733279&
+ 0.0146379\cr 8&3.733279&3.7330791&1.99887999 \times 10^{-4}\cr 9&
+ 3.7330791&3.733079&3.68620818 \times 10^{-8}\cr }$$
+
+\section{ejercicio 7}
+Utilice el método de la secante para encontrar la solución, con una tolerancia
+$10^{-4}$, para los siguientes problemas.
+
+\subsection{inciso b)}
+Para $f(x)=x^3+3x^2-1=0$ en el intervalo $[-3,\,-2]$.
+\begin{verbatim}
+f(x):=x^3+3*x^2-1;
+secante(-3, -2, 4, 20);
+\end{verbatim}
+
+$$\pmatrix{N&X_{n-1}&X_n&X_{n+1}& error\cr 1&-3
+ &-2&-2.75&0.75\cr 2&-2&-2.75&-3.066667&0.31667\cr 3&-2.75&-3.066667&
+ -2.862024&0.20464\cr 4&-3.066667&-2.862024&-2.877186&0.015162\cr 5&-
+ 2.862024&-2.877186&-2.879414&0.002228\cr 6&-2.877186&-2.879414&-
+ 2.879385&2.870283 \times 10^{-5}\cr }$$
+
+\subsection{inciso d)}
+Para $f(x)=x-0.8-0.2sin(x)=0$ en el intervalo $[0,\,\pi/2]$
+
+\begin{verbatim}
+f(x):=x-0.8-0.2*sin(x);
+secante(0, %pi/2, 4, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}&X_n&X_{n+1}&error\cr 1&0&
+ 1.570796&0.91672&0.65408\cr 2&1.570796&0.91672&0.96155&0.044831\cr 3
+ &0.91672&0.96155&0.96435&0.0027948\cr 4&0.96155&0.96435&0.96433&
+ 1.2200555 \times 10^{-5}\cr }$$
+
+\section{ejercicio 9}
+Utilice el método de posicion falsa para encontrar la solución, con
+una tolerancia $10^{-4}$, para los siguientes problemas.
+
+\subsection{inciso b)}
+Para $f(x)=x^3+3x^2-1=0$ en el intervalo $[-3,\,-2]$.
+\begin{verbatim}
+f(x):=x^3+3*x^2-1;
+posicionfalsa(-3, -2, 4, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n&X_{n+1}& error\cr 1&-3
+ &-2&-2.75&0.75\cr 2&-3&-2.75&-2.867769&0.11777\cr 3&-3&-2.867769&-
+ 2.878406&0.010638\cr 4&-3&-2.878406&-2.879303&
+ 8.9706978 \times 10^{-4}\cr 5&-3&-2.879303&-2.879378&
+ 7.5196398 \times 10^{-5}\cr }$$
+
+
+\subsection{inciso d)}
+Para $f(x)=x-0.8-0.2sin(x)=0$ en el intervalo $[0,\,\pi/2]$
+
+\begin{verbatim}
+f(x):=x-0.8-0.2*sin(x);
+posicionfalsa(0, %pi/2, 4, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}&X_n&X_{n+1}& error \cr 1&0&
+ 1.570796&0.91672&0.65408\cr 2&0.91672&1.570796&0.96155&0.044831\cr 3
+ &0.96155&1.570796&0.96417&0.0026194\cr 4&0.96417&1.570796&0.96432&
+ 1.5355164 \times 10^{-4}\cr 5&0.96432&1.570796&0.96433&
+ 9.0027664 \times 10^{-6}\cr }$$
+
+\section{ejercicio 11}
+Use los tres métodos (newton, secante y posicion falsa) para buscar la
+soluncion, con una tolerancia $10^{-5}$, para los siguientes problemas.
+
+\subsection{inciso a)}
+Para $f(x)=3xe^x=0$ en el intervalo $[1,\,2]$.
+
+\subsubsection{Newton}
+$$
+f\,'(x)=3\,x\,e^{x}+3\,e^{x}
+$$
+\begin{verbatim}
+f(x):=3*x*%e^x;
+newton(1.3, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_n&X_{n+1}& error\cr 1&1.3&0.734783&
+ 0.565217\cr 2&0.734783&0.311224&0.423559\cr 3&0.311224&0.0738701&
+ 0.237354\cr 4&0.0738701&0.00508142&0.0687887\cr 5&0.00508142&
+ 2.569032 \times 10^{-5}&0.00505573\cr 6&2.569032 \times 10^{-5}&
+ 6.59975587 \times 10^{-10}&2.568966 \times 10^{-5}\cr 7&
+ 6.59975587 \times 10^{-10}&4.35567771 \times 10^{-19}&
+ 6.59975586 \times 10^{-10}\cr }$$
+
+\subsubsection{Secante}
+\begin{verbatim}
+f(x):=3*x*%e^x;
+secante(1, 2, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n&X_{n+1}& error\cr 1&1&
+ 2&0.7746&1.2253997\cr 2&2&0.7746&0.617357&0.157244\cr 3&0.7746&
+ 0.617357&0.281622&0.335735\cr 4&0.617357&0.281622&0.119176&0.162446
+ \cr 5&0.281622&0.119176&0.0279083&0.0912673\cr 6&0.119176&0.0279083&
+ 0.00309614&0.0248122\cr 7&0.0279083&0.00309614&
+ 8.50847825 \times 10^{-5}&0.00301106\cr 8&0.00309614&
+ 8.50847825 \times 10^{-5}&2.63016187 \times 10^{-7}&
+ 8.48217663 \times 10^{-5}\cr 9&8.50847825 \times 10^{-5}&
+ 2.63016187 \times 10^{-7}&2.23777201 \times 10^{-11}&
+ 2.6299381 \times 10^{-7}\cr }$$
+
+\subsubsection{Posicion falsa}
+\begin{verbatim}
+f(x):=3*x*%e^x;
+posicionfalsa(1, 2, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n& X_{n+1}& error\cr 1&1&
+ 2&0.7746&1.2254\cr 2&1&0.7746&0.4095&0.3651\cr 3&1&0.4095&0.2362&
+ 0.1733\cr 4&1&0.2362&0.1418&0.09445\cr 5&1&0.1418&0.08689&0.05487
+ \cr 6&1&0.08689&0.0539&0.03299\cr 7&1&0.0539&0.03368&0.02022\cr 8&1&
+ 0.03368&0.02114&0.01254\cr 9&1&0.02114&0.0133&0.007836\cr 10&1&
+ 0.0133&0.008383&0.004917\cr 11&1&0.008383&0.00529&0.003094\cr 12&1&
+ 0.00529&0.00334&0.00195\cr 13&1&0.00334&0.00211&0.00123\cr 14&1&
+ 0.00211&0.001333&7.767375 \times 10^{-4}\cr }$$
+
+\subsection{inciso b)}
+Para $f(x)=2\,x+3\,cos(x)-e^x=0$ en el intervalo $[0,\,1]$.
+
+$$
+f\,'(x)=-3\,\sin x-e^{x}+2
+$$
+\subsubsection{Newton}
+\begin{verbatim}
+f(x):=2*x+3*cos(x)-%e^x;
+newton(0.5, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_n& X_{n+1}&error\cr 1&0.5&2.3252348&
+ 1.8252348\cr 2&2.3252348&1.592329&0.732906\cr 3&1.592329&1.288817&
+ 0.303512\cr 4&1.288817&1.2409046&0.0479124\cr 5&1.2409046&1.2397154&
+ 0.00118917\cr 6&1.2397154&1.2397147&7.29899547 \times 10^{-7}\cr }$$
+
+\subsubsection{Secante}
+\begin{verbatim}
+f(x):=2*x+3*cos(x)-%e^x;
+secante(0.5, 1, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}&X_n& X_{n+1}& error\cr 1&
+ 0.5&1&1.4173405&0.41734\cr 2&1&1.4173405&1.217055&0.200285\cr 3&
+ 1.4173405&1.217055&1.2377761&0.0207211\cr 4&1.217055&1.2377761&
+ 1.2397376&0.0019615\cr 5&1.2377761&1.2397376&1.2397147&
+ 2.29590039 \times 10^{-5}\cr 6&1.2397376&1.2397147&1.2397147&
+ 2.29674058 \times 10^{-8}\cr }$$
+
+\subsubsection{Posicion falsa}
+\begin{verbatim}
+f(x):=2*x+3*cos(x)-%e^x;
+posicionfalsa(0.5, 1, 5, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n&X_{n+1}&error\cr 1&
+ 0.5&1&1.4173405&0.41734\cr 2&1.4173405&1&1.217055&0.200285\cr 3&
+ 1.217055&1.4173405&1.2377761&0.0207211\cr 4&1.2377761&1.4173405&
+ 1.2395503&0.00177417\cr 5&1.2395503&1.4173405&1.2397008&
+ 1.5046154 \times 10^{-4}\cr 6&1.2397008&1.4173405&1.2397135&
+ 1.27497504 \times 10^{-5}\cr 7&1.2397135&1.4173405&1.2397146&
+ 1.08030887 \times 10^{-6}\cr }$$
+
+\section{ejercicio 17}
+El polinomio de cuarto grado 
+$$
+f(x)=230\,x^4+18\,x^3+9\,x^2-221\,x-9
+$$
+tiene dos ceros reales, la una en $[-1,\,0]$ y la otra en $[0,\,1]$.
+Aproximar estos ceros con $10^{-6}$ usando:
+
+\begin{itemize}
+\item Método de Posicion falsa
+\item Método de la Secante
+\item Método de Newton
+\end{itemize}
+
+\subsection{inciso a)}
+
+\subsubsection{intervalo [-1, 0]}
+
+\begin{verbatim}
+f(x):=230*x^4+18*x^3+9*x^2-221*x-9;
+posicionfalsa(-1, 0, 6, 30);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n&X_{n+1}& error\cr 1&-1
+ &0&-0.02036199&0.02036199\cr 2&-1&-0.02036199&-0.03043025&0.01006826
+ \cr 3&-1&-0.03043025&-0.03547981&0.005049567\cr 4&-1&-0.03547981&-
+ 0.03803041&0.002550599\cr 5&-1&-0.03803041&-0.03932338&0.001292966
+ \cr 6&-1&-0.03932338&-0.03998001&6.566287334 \times 10^{-4}\cr 7&-1&
+ -0.03998001&-0.04031378&3.337740601 \times 10^{-4}\cr 8&-1&-
+ 0.04031378&-0.04048352&1.697416654 \times 10^{-4}\cr 9&-1&-
+ 0.04048352&-0.04056987&8.634310068 \times 10^{-5}\cr 10&-1&-
+ 0.04056987&-0.04061379&4.392576813 \times 10^{-5}\cr 11&-1&-
+ 0.04061379&-0.04063614&2.23479565 \times 10^{-5}\cr 12&-1&-
+ 0.04063614&-0.04064751&1.137024619 \times 10^{-5}\cr 13&-1&-
+ 0.04064751&-0.0406533&5.785072919 \times 10^{-6}\cr 14&-1&-0.0406533
+ &-0.04065624&2.943413834 \times 10^{-6}\cr 15&-1&-0.04065624&-
+ 0.04065774&1.497599226 \times 10^{-6}\cr 16&-1&-0.04065774&-
+ 0.0406585&7.61975133 \times 10^{-7}\cr }$$
+
+\subsubsection{intervalo [0, 1]}
+
+\begin{verbatim}
+f(x):=230*x^4+18*x^3+9*x^2-221*x-9;
+posicionfalsa(0, 1, 6, 30);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n& X_{n+1}& error\cr 1&0&
+ 1&0.25&0.75\cr 2&0.25&1&0.7737628&0.5237628\cr 3&0.7737628&1&
+ 0.9448852&0.1711224\cr 4&0.9448852&1&0.9611108&0.01622563\cr 5&
+ 0.9611108&1&0.9623057&0.001194866\cr 6&0.9623057&1&0.9623917&
+ 8.608441294 \times 10^{-5}\cr 7&0.9623917&1&0.9623979&
+ 6.1920579 \times 10^{-6}\cr 8&0.9623979&1&0.9623984&
+ 4.453438442 \times 10^{-7}\cr }$$
+
+\subsection{inciso b)}
+
+\subsubsection{intervalo [-1, 0]}
+
+\begin{verbatim}
+f(x):=230*x^4+18*x^3+9*x^2-221*x-9;
+secante(-1, 0, 6, 30);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n& X_{n+1}& error\cr 1&-1
+ &0&-0.02036199&0.02036199\cr 2&0&-0.02036199&-0.04069126&0.02032927
+ \cr 3&-0.02036199&-0.04069126&-0.04065926&3.199385755 \times 10^{-5}
+ \cr 4&-0.04069126&-0.04065926&-0.04065929&2.573803404 \times 10^{-8}
+ \cr }$$
+
+\subsubsection{intervalo [1,0]}
+\begin{verbatim}
+f(x):=230*x^4+18*x^3+9*x^2-221*x-9;
+secante(0.5, 1, 6, 30);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n& X_{n+1}& error\cr 1&
+ 0.5&1&0.8942214&0.1057786\cr 2&1&0.8942214&0.9570464&0.062825\cr 3&
+ 0.8942214&0.9570464&0.9632104&0.006164091\cr 4&0.9570464&0.9632104&
+ 0.9623896&8.208126831 \times 10^{-4}\cr 5&0.9632104&0.9623896&
+ 0.9623984&8.772062474 \times 10^{-6}\cr 6&0.9623896&0.9623984&
+ 0.9623984&1.432207719 \times 10^{-8}\cr }$$
+
+\subsection{inciso c)}
+
+\subsubsection{intervalo [-1, 0]}
+$$
+f\,'(x)=920\,x^3+54\,x^2+18\,x-221
+$$
+\begin{verbatim}
+f(x):=230*x^4+18*x^3+9*x^2-221*x-9;
+newton(-0.5, 6, 30);
+\end{verbatim}
+
+$$\pmatrix{N& X_n& X_{n+1}& error\cr 1&-0.5&-0.1504525
+ &0.3495475\cr 2&-0.1504525&-0.04181681&0.1086357\cr 3&-0.04181681&-
+ 0.04065934&0.00115747\cr 4&-0.04065934&-0.04065929&
+ 5.518157035 \times 10^{-8}\cr }$$
+
+\subsubsection{intervalo [0, 1]}
+$$
+f\,'(x)=920\,x^3+54\,x^2+18\,x-221
+$$
+
+\begin{verbatim}
+f(x):=230*x^4+18*x^3+9*x^2-221*x-9;
+newton(0.7, 6, 30);
+\end{verbatim}
+
+$$\pmatrix{N& X_n& X_{n+1}& error\cr 1&0.7&1.43262236&
+ 0.7326224\cr 2&1.43262236&1.15993576&0.2726866\cr 3&1.15993576&
+ 1.01378674&0.146149\cr 4&1.01378674&0.9670653&0.04672145\cr 5&
+ 0.9670653&0.9624416&0.004623643\cr 6&0.9624416&0.9623984&
+ 4.322351778 \times 10^{-5}\cr 7&0.9623984&0.9623984&
+ 3.754473843 \times 10^{-9}\cr }$$
+
+\section{ejercicio 24}
+Buscar una aproximación de $\lambda{}$, con $10^{-4}$, para la siguiente ecuación
+$$
+1564000=1000000\,e^{\lambda}+\frac{435000}{\lambda} \left(e^{\lambda}-1\right)
+$$
+
+$$
+f\,'(x)={{435000\,e^{x}}\over{x}}+1000000\,e^{x}-{{435000\,\left(e^{x}-1
+ \right)}\over{x^2}}
+$$
+
+\begin{verbatim}
+f(x):=1000000*%e^x+435000/x*(%e^x-1)-1564000;
+newton(0.01, 4, 20);
+\end{verbatim}
+
+$$\pmatrix{N&X_n& X_{n+1}& error\cr 1&0.01&0.10501&
+ 0.09501\cr 2&0.10501&0.10101&0.0040043\cr 3&0.10101&0.101&
+ 7.5800338 \times 10^{-6}\cr }$$
+
+\section{ejercicio 25}
+La suma de dos numeros da 20. Si a ámbos se les añade su raiz cuadrada
+y se multiplican da 155.55.
+$$
+x+y=20 \quad \longrightarrow \quad y=20-x
+$$
+\begin{eqnarray}
+\left(x+\sqrt{x}\right)\left(y+\sqrt{y}\right)&=&155.55 \nonumber\\
+\left(x+\sqrt{x}\,\right)\left(20-x+\sqrt{20-x} \, \right)&=&155.55 \nonumber\\
+\left(x+\sqrt{x}\,\right)\left(20-x+\sqrt{20-x} \, \right)-155.55&=&0=f(x) \nonumber
+\end{eqnarray}
+\begin{verbatim}
+f(x):=(x+sqrt(x))*(20-x+sqrt(20-x))-155.55;
+secante(6, 7, 6, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}&X_n& X_{n+1}& error\cr 1&6&
+ 7&6.54963582&0.4503642\cr 2&7&6.54963582&6.50999293&0.03964289\cr 3&
+ 6.54963582&6.50999293&6.51286432&0.002871395\cr 4&6.50999293&
+ 6.51286432&6.51284873&1.559160583 \times 10^{-5}\cr 5&6.51286432&
+ 6.51284873&6.51284873&6.580253675 \times 10^{-9}\cr }$$
+
+\begin{verbatim}
+f(x):=(x+sqrt(x))*(20-x+sqrt(20-x))-155.55;
+secante(13, 14, 6, 20);
+\end{verbatim}
+
+$$\pmatrix{N& X_{n-1}& X_n&X_{n+1}& error\cr 1&13
+ &14&13.4503642&0.5496358\cr 2&14&13.4503642&13.4845347&0.03417049
+ \cr 3&13.4503642&13.4845347&13.4871656&0.002630904\cr 4&13.4845347&
+ 13.4871656&13.4871513&1.430811379 \times 10^{-5}\cr 5&13.4871656&
+ 13.4871513&13.4871513&5.532454495 \times 10^{-9}\cr }$$
+
+por lo tanto los dos numeros son: $x=6.512849$ y $y=13.487151$
+
+%%% Local Variables:
+%%% TeX-master: "tarea1"
+%%% End:
